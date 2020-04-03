@@ -1,12 +1,15 @@
 package SuperChargingStation;
 
-public class charging_Stall {
-    private static double station_KWH_Cost = 0.18;
-    private static double socketVoltage = 480;
-    private static double socketAmps = 300;
-    private static double averageChargeEfficiencyForAllTesla = 0.85; //85 percent
+import java.util.Arrays;
+import java.util.List;
 
+public class charging_Stall {
+    public static List<String> stall_List = Arrays.asList("Booth One","Booth Two","Booth Three","Booth Four");
+    private static double averageChargeEfficiencyForAllTesla = 0.85; //85 percent
+    public static boolean freeCharging = false;
     public static double calculateSocketOutput(){
+        double socketVoltage = 480;
+        double socketAmps = 300;
         return (socketVoltage * socketAmps) / 1000;
     }
     public static double calculatedChargingIntake(double socketOutput){
@@ -20,6 +23,7 @@ public class charging_Stall {
         return chargeCapacityThatNeedsCharge / chargingIntake;
     }
     public static double calculatedChargingCost( double chargeCapacityThatNeedsCharge){
+        double station_KWH_Cost = 0.18;
         return (station_KWH_Cost * chargeCapacityThatNeedsCharge) / averageChargeEfficiencyForAllTesla;
     }
     public static double calculatedMinutes(double timeInMintues, double hoursInMinutes){
@@ -33,6 +37,19 @@ public class charging_Stall {
     }
     public static double calculatedTimeInMinutes( double chargingTime) {
         return chargingTime * 60;
+    }
+    public static double calculatedTotalChargingCost(double totalChargingCostForAllModelX,double totalChargingCostForAllModelS,
+                                                     double totalChargingCostForAllModelThree,
+                                                     double totalChargingCostForAllModelY,
+                                                     double totalChargingCostForAllRoadster){
+        return  totalChargingCostForAllModelS+totalChargingCostForAllModelThree+totalChargingCostForAllModelX+
+                totalChargingCostForAllModelY+totalChargingCostForAllRoadster;
+    }
+    public static double calculatedTotalTime(double totalChargingTimeForModelS,double totalChargingTimeForModelX,
+                                             double totalChargingTimeForModel3,double totalChargingTimeForModelY,
+                                             double totalChargingTimeForRoadster){
+        return totalChargingTimeForModelS+totalChargingTimeForModel3+totalChargingTimeForModelX+
+                totalChargingTimeForModelY+totalChargingTimeForRoadster;
     }
 }
 
