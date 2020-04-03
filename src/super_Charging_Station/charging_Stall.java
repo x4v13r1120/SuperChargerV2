@@ -1,11 +1,11 @@
-package SuperChargingStation;
+package super_Charging_Station;
 
 import java.util.Arrays;
 import java.util.List;
 
 public class charging_Stall {
-    public static List<String> stall_List = Arrays.asList("Booth One","Booth Two","Booth Three","Booth Four");
-    private static double averageChargeEfficiencyForAllTesla = 0.85; //85 percent
+    public static final List<String> stall_List = Arrays.asList("Booth One","Booth Two","Booth Three","Booth Four");
+    private static final double averageChargeEfficiencyForAllTesla = 0.85; //85 percent
     public static boolean freeCharging = false;
     public static double calculateSocketOutput(){
         double socketVoltage = 480;
@@ -26,10 +26,10 @@ public class charging_Stall {
         double station_KWH_Cost = 0.18;
         return (station_KWH_Cost * chargeCapacityThatNeedsCharge) / averageChargeEfficiencyForAllTesla;
     }
-    public static double calculatedMinutes(double timeInMintues, double hoursInMinutes){
-        return timeInMintues - hoursInMinutes;
+    public static double calculatedMinutes(double timeInMinutes, double hoursInMinutes){
+        return timeInMinutes - hoursInMinutes;
     }
-    public static double calculatedHoursInMintues(double timeInHours){
+    public static double calculatedHoursInMinutes(double timeInHours){
         return timeInHours * 60;
     }
     public static double calculatedTimeJustHours(double chargingTime){

@@ -4,13 +4,12 @@
   This is a upgraded project for another tesla super charging station for my exam 2 in cop 2005. Its is a software
   prototype V2.0 to manage a particular supercharging station for Electric Vehicles (EVs) that you delivered in Exam01.
  */
-package SuperChargingStation;
+package super_Charging_Station;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
-import java.util.Random;
 
 public class charging_Station_Tester {
 
@@ -29,18 +28,15 @@ public class charging_Station_Tester {
         tesla_Models.add("5.Roadster");
 
         //simple answers
-        List<String> answers = new ArrayList<String>();
+        List<String> answers = new ArrayList<>();
         answers.add("1.Yes");
         answers.add("2.No");
-
-        // constructor for a random number
-        Random rand = new Random();
 
         //goes for each of the booth i hard coded 4 but can easy be changed for more or less
         for(int i = 0; i < charging_Stall.stall_List.size(); i++) {
             double totalStallTime = 0;
-            for (int numberOfCarsAtStation = rand.nextInt(10); numberOfCarsAtStation > 0 &&
-                    numberOfCarsAtStation != 0; numberOfCarsAtStation--) {
+            for (double numberOfCarsAtStation = getRandomDoubleBetweenRange(); numberOfCarsAtStation > 0;
+                 numberOfCarsAtStation--) {
 
                 System.out.println("Welcome to this Charging station.\n");
                 System.out.println("You are at " + charging_Stall.stall_List.get(i) + "\n");
@@ -56,23 +52,26 @@ public class charging_Station_Tester {
                     System.out.println("\nWhat charge would you like it to be at?");
                     double wantsChargeAt = keyboard.nextDouble();
 
-                    double percentNeededToCharge = charging_Stall.calculatedPercentNeededToCharge(wantsChargeAt, originalCharge);
+                    double percentNeededToCharge = charging_Stall.calculatedPercentNeededToCharge(wantsChargeAt,
+                            originalCharge);
 
                     double chargeCapacityThatNeedsCharge = model_X.calculatedCapNeedCharge(percentNeededToCharge);
 
                     double socketOutput = charging_Stall.calculateSocketOutput();
                     double chargingIntake = charging_Stall.calculatedChargingIntake(socketOutput);
-                    double chargingTime = charging_Stall.calculatedChargingTime(chargeCapacityThatNeedsCharge, chargingIntake);
+                    double chargingTime = charging_Stall.calculatedChargingTime(chargeCapacityThatNeedsCharge,
+                            chargingIntake);
                     double chargingCost = charging_Stall.calculatedChargingCost(chargeCapacityThatNeedsCharge);
 
                     System.out.println("Your charging cost is $" + df2.format(chargingCost) + "\n");
 
                     double timeInMinutes = charging_Stall.calculatedTimeInMinutes(chargingTime);
                     double timeJustHours = charging_Stall.calculatedTimeJustHours(chargingTime);
-                    double hoursInMinutes = charging_Stall.calculatedHoursInMintues(timeJustHours);
+                    double hoursInMinutes = charging_Stall.calculatedHoursInMinutes(timeJustHours);
                     double minutes = charging_Stall.calculatedMinutes(timeInMinutes, hoursInMinutes);
 
-                    System.out.println("Your charging time is " + timeJustHours + " hrs and " + (int) (minutes) + " mins.\n");
+                    System.out.println("Your charging time is " + timeJustHours + " hrs and " + (int) (minutes) +
+                            " mins.\n");
 
                     model_X.totalChargingCostForAllModelX = +chargingCost;
                     model_X.totalChargingTimeForModelX = +chargingTime;
@@ -85,23 +84,26 @@ public class charging_Station_Tester {
                     System.out.println("\nWhat charge would you like it to be at?");
                     double wantsChargeAt = keyboard.nextDouble();
 
-                    double percentNeededToCharge = charging_Stall.calculatedPercentNeededToCharge(wantsChargeAt, originalCharge);
+                    double percentNeededToCharge = charging_Stall.calculatedPercentNeededToCharge(wantsChargeAt,
+                            originalCharge);
 
                     double chargeCapacityThatNeedsCharge = model_S.calculatedCapNeedCharge(percentNeededToCharge);
 
                     double socketOutput = charging_Stall.calculateSocketOutput();
                     double chargingIntake = charging_Stall.calculatedChargingIntake(socketOutput);
-                    double chargingTime = charging_Stall.calculatedChargingTime(chargeCapacityThatNeedsCharge, chargingIntake);
+                    double chargingTime = charging_Stall.calculatedChargingTime(chargeCapacityThatNeedsCharge,
+                            chargingIntake);
                     double chargingCost = charging_Stall.calculatedChargingCost(chargeCapacityThatNeedsCharge);
 
                     System.out.println("Your charging cost is $" + df2.format(chargingCost) + "\n");
 
                     double timeInMinutes = charging_Stall.calculatedTimeInMinutes(chargingTime);
                     double timeJustHours = charging_Stall.calculatedTimeJustHours(chargingTime);
-                    double hoursInMinutes = charging_Stall.calculatedHoursInMintues(timeJustHours);
+                    double hoursInMinutes = charging_Stall.calculatedHoursInMinutes(timeJustHours);
                     double minutes = charging_Stall.calculatedMinutes(timeInMinutes, hoursInMinutes);
 
-                    System.out.println("Your charging time is " + timeJustHours + " hrs and " + (int) (minutes) + " mins.\n");
+                    System.out.println("Your charging time is " + timeJustHours + " hrs and " + (int) (minutes) +
+                            " mins.\n");
 
                     model_S.totalChargingCostForAllModelS = +chargingCost;
                     model_S.totalChargingTimeForModelS = +chargingTime;
@@ -114,23 +116,26 @@ public class charging_Station_Tester {
                     System.out.println("\nWhat charge would you like it to be at?");
                     double wantsChargeAt = keyboard.nextDouble();
 
-                    double percentNeededToCharge = charging_Stall.calculatedPercentNeededToCharge(wantsChargeAt, originalCharge);
+                    double percentNeededToCharge = charging_Stall.calculatedPercentNeededToCharge(wantsChargeAt,
+                            originalCharge);
 
                     double chargeCapacityThatNeedsCharge = model_3.calculatedCapNeedCharge(percentNeededToCharge);
 
                     double socketOutput = charging_Stall.calculateSocketOutput();
                     double chargingIntake = charging_Stall.calculatedChargingIntake(socketOutput);
-                    double chargingTime = charging_Stall.calculatedChargingTime(chargeCapacityThatNeedsCharge, chargingIntake);
+                    double chargingTime = charging_Stall.calculatedChargingTime(chargeCapacityThatNeedsCharge,
+                            chargingIntake);
                     double chargingCost = charging_Stall.calculatedChargingCost(chargeCapacityThatNeedsCharge);
 
                     System.out.println("Your charging cost is $" + df2.format(chargingCost) + "\n");
 
                     double timeInMinutes = charging_Stall.calculatedTimeInMinutes(chargingTime);
                     double timeJustHours = charging_Stall.calculatedTimeJustHours(chargingTime);
-                    double hoursInMinutes = charging_Stall.calculatedHoursInMintues(timeJustHours);
+                    double hoursInMinutes = charging_Stall.calculatedHoursInMinutes(timeJustHours);
                     double minutes = charging_Stall.calculatedMinutes(timeInMinutes, hoursInMinutes);
 
-                    System.out.println("Your charging time is " + timeJustHours + " hrs and " + (int) (minutes) + " mins.\n");
+                    System.out.println("Your charging time is " + timeJustHours + " hrs and " + (int) (minutes) +
+                            " mins.\n");
 
                     model_3.totalChargingCostForAllModel3 = +chargingCost;
                     model_3.totalChargingTimeForModel3 = +chargingTime;
@@ -143,22 +148,25 @@ public class charging_Station_Tester {
                     System.out.println("\nWhat charge would you like it to be at?");
                     double wantsChargeAt = keyboard.nextDouble();
 
-                    double percentNeededToCharge = charging_Stall.calculatedPercentNeededToCharge(wantsChargeAt, originalCharge);
+                    double percentNeededToCharge = charging_Stall.calculatedPercentNeededToCharge(wantsChargeAt,
+                            originalCharge);
 
                     double chargeCapacityThatNeedsCharge = model_Y.calculatedCapNeedCharge(percentNeededToCharge);
 
                     double socketOutput = charging_Stall.calculateSocketOutput();
                     double chargingIntake = charging_Stall.calculatedChargingIntake(socketOutput);
-                    double chargingTime = charging_Stall.calculatedChargingTime(chargeCapacityThatNeedsCharge, chargingIntake);
+                    double chargingTime = charging_Stall.calculatedChargingTime(chargeCapacityThatNeedsCharge,
+                            chargingIntake);
                     double chargingCost = charging_Stall.calculatedChargingCost(chargeCapacityThatNeedsCharge);
 
                     double timeInMinutes = charging_Stall.calculatedTimeInMinutes(chargingTime);
                     double timeJustHours = charging_Stall.calculatedTimeJustHours(chargingTime);
-                    double hoursInMinutes = charging_Stall.calculatedHoursInMintues(timeJustHours);
+                    double hoursInMinutes = charging_Stall.calculatedHoursInMinutes(timeJustHours);
                     double minutes = charging_Stall.calculatedMinutes(timeInMinutes, hoursInMinutes);
 
                     System.out.println("Your charging cost is $" + df2.format(chargingCost) + "\n");
-                    System.out.println("Your charging time is " + timeJustHours + " hrs and " + (int) (minutes) + " mins.\n");
+                    System.out.println("Your charging time is " + timeJustHours + " hrs and " + (int) (minutes) +
+                            " mins.\n");
 
                     model_Y.totalChargingCostForAllModelY = +chargingCost;
                     model_Y.totalChargingTimeForModelY = +chargingTime;
@@ -182,22 +190,25 @@ public class charging_Station_Tester {
                     System.out.println("\nWhat charge would you like it to be at?");
                     double wantsChargeAt = keyboard.nextDouble();
 
-                    double percentNeededToCharge = charging_Stall.calculatedPercentNeededToCharge(wantsChargeAt, originalCharge);
+                    double percentNeededToCharge = charging_Stall.calculatedPercentNeededToCharge(wantsChargeAt,
+                            originalCharge);
 
                     double chargeCapacityThatNeedsCharge = roadster.calculatedCapNeedCharge(percentNeededToCharge);
 
                     double socketOutput = charging_Stall.calculateSocketOutput();
                     double chargingIntake = charging_Stall.calculatedChargingIntake(socketOutput);
-                    double chargingTime = charging_Stall.calculatedChargingTime(chargeCapacityThatNeedsCharge, chargingIntake);
+                    double chargingTime = charging_Stall.calculatedChargingTime(chargeCapacityThatNeedsCharge,
+                            chargingIntake);
                     double chargingCost = charging_Stall.calculatedChargingCost(chargeCapacityThatNeedsCharge);
 
                     double timeInMinutes = charging_Stall.calculatedTimeInMinutes(chargingTime);
                     double timeJustHours = charging_Stall.calculatedTimeJustHours(chargingTime);
-                    double hoursInMinutes = charging_Stall.calculatedHoursInMintues(timeJustHours);
+                    double hoursInMinutes = charging_Stall.calculatedHoursInMinutes(timeJustHours);
                     double minutes = charging_Stall.calculatedMinutes(timeInMinutes, hoursInMinutes);
 
                     System.out.println("Your charging cost is $" + df2.format(chargingCost) + "\n");
-                    System.out.println("Your charging time is " + timeJustHours + " hrs and " + (int) (minutes) + " mins.\n");
+                    System.out.println("Your charging time is " + timeJustHours + " hrs and " + (int) (minutes) +
+                            " mins.\n");
 
                     roadster.totalChargingCostForAllRoadster = +chargingCost;
                     roadster.totalChargingTimeForRoadster = +chargingTime;
@@ -220,7 +231,7 @@ public class charging_Station_Tester {
 
             }
             double totalStallJustHours = charging_Stall.calculatedTimeJustHours(totalStallTime);
-            double totalHoursInMinutes = charging_Stall.calculatedHoursInMintues(totalStallJustHours);
+            double totalHoursInMinutes = charging_Stall.calculatedHoursInMinutes(totalStallJustHours);
             double totalTimeInMinutes = charging_Stall.calculatedTimeInMinutes(totalStallTime);
             double totalStallMinutes = charging_Stall.calculatedMinutes(totalTimeInMinutes,totalHoursInMinutes);
             System.out.println("The total time all cars spent at this booth is "+ totalStallJustHours+" hrs and "
@@ -235,25 +246,31 @@ public class charging_Station_Tester {
                 model_X.totalChargingTimeForModelX,model_3.totalChargingTimeForModel3,
                 model_Y.totalChargingTimeForModelY,roadster.totalChargingTimeForRoadster);
         double totalTimeJustHours = charging_Stall.calculatedTimeJustHours(totalChargingTime);
-        double totalHoursInMinutes = charging_Stall.calculatedHoursInMintues(totalTimeJustHours);
+        double totalHoursInMinutes = charging_Stall.calculatedHoursInMinutes(totalTimeJustHours);
         double totalTimeInMinutes = charging_Stall.calculatedTimeInMinutes(totalChargingTime);
         double totalMinutes = charging_Stall.calculatedMinutes(totalTimeInMinutes,totalHoursInMinutes);
 
         double totalFreeTimeChargingForAll = charging_Stall.calculatedTotalFreeChargingTimeAtStall(
-                model_Y.totalFreeChargingTimeForModelY,
-                roadster.totalFreeChargingTimeForRoadster);
+                model_Y.totalFreeChargingTimeForModelY, roadster.totalFreeChargingTimeForRoadster);
         double totalFreeTimeJustHours = charging_Stall.calculatedTimeJustHours(totalFreeTimeChargingForAll);
-        double totalFreeHoursInMinutes = charging_Stall.calculatedHoursInMintues(totalFreeTimeJustHours);
-        double totalFreeTimeInMintues = charging_Stall.calculatedTimeInMinutes(totalFreeTimeChargingForAll);
-        double totalFreeMinutes = charging_Stall.calculatedMinutes(totalFreeTimeInMintues,totalFreeHoursInMinutes);
+        double totalFreeHoursInMinutes = charging_Stall.calculatedHoursInMinutes(totalFreeTimeJustHours);
+        double totalFreeTimeInMinutes = charging_Stall.calculatedTimeInMinutes(totalFreeTimeChargingForAll);
+        double totalFreeMinutes = charging_Stall.calculatedMinutes(totalFreeTimeInMinutes,totalFreeHoursInMinutes);
 
         System.out.println("The total charging cost at this station is $"+ df2.format(totalChargingCost)+"\n");
         System.out.println("The total time for all vehicles that came to the station is "+ totalTimeJustHours +
                 " hrs and " + (int) (totalMinutes) + " mins.\n");
         System.out.println("The total free charging cost that came to this station is $"
-                + df2.format(charging_Stall.calculatedTotalFreeChargingTimeAtStation(model_Y.totalFreeChargingForAllModelY
-                ,roadster.totalChargingCostForAllRoadster))+"\n");
-        System.out.println("The total free charging time that came to this station is "+ totalFreeTimeJustHours+" hrs and "
-                + (int) totalFreeMinutes+" mins.\n");
+                + df2.format(charging_Stall.calculatedTotalFreeChargingTimeAtStation(
+                        model_Y.totalFreeChargingForAllModelY,roadster.totalChargingCostForAllRoadster))+"\n");
+        System.out.println("The total free charging time that came to this station is "+ totalFreeTimeJustHours+
+                " hrs and " + (int) totalFreeMinutes+" mins.\n");
+    }
+
+    public static double getRandomDoubleBetweenRange(){
+        double max = 10;
+        double min = 1;
+        return (Math.random()*((max-min)+1))+min;
+
     }
 }
