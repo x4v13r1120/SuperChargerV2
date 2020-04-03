@@ -51,6 +51,14 @@ public class charging_Stall {
         return totalChargingTimeForModelS+totalChargingTimeForModel3+totalChargingTimeForModelX+
                 totalChargingTimeForModelY+totalChargingTimeForRoadster;
     }
+    public static double calculatedTotalFreeChargingTimeAtStall(double totalFreeChargingTimeForModelY,
+                                                                double totalFreeChargingTimeForRoadster){
+        return  totalFreeChargingTimeForRoadster+totalFreeChargingTimeForModelY;
+    }
+    public static double calculatedTotalFreeChargingTimeAtStation(double totalFreeChargingForAllModelY,
+                                                                  double totalFreeChargingForAllRoadster){
+        return totalFreeChargingForAllModelY+totalFreeChargingForAllRoadster;
+    }
 }
 
 
